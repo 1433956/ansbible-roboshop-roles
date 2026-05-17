@@ -1,0 +1,2 @@
+REDIS_HOST: redis.devops26.sbs
+MONGO_HOST: mongodb.devops26.sbs
