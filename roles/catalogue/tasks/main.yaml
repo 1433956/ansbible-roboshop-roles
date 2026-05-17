@@ -1,4 +1,4 @@
-- name: app-setup for {{ component }}
+- name: app-setup for "{{ component }}"
   ansible.builtin.include_roles:
     name: common
     task_from: app-setup
