@@ -1,0 +1,32 @@
+- name: app setup for shipping
+  include_role:
+    name: common
+    tasks_from: maven-app-setup
+- name: maven setup for shipping
+  include_role:
+    name: common
+    tasks_from: maven-setup
+- name: systemd setup for shipping service
+  include_role:
+    name: common
+    tasks_from: systemd
+  
+
+- name: import data
+  community.mysql.mysql_db:
+    name: all
+    state: import
+    target: "{{ item }}"
+    login_host: mysql.devops26.sbs
+    login_user: root
+    login_password: RoboShop@1
+  loop: 
+  - /app/db/schema.sql
+  - /app/db/app-user.sql 
+  - /app/db/master-data.sql
+    
+- name: restart shipping service
+  ansible.builtin.service:
+    name: shipping
+    state: restarted
+  
