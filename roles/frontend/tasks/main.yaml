@@ -12,10 +12,10 @@
     name: nginx
     state: started
     enabled: yes
-
-- name: Remove the default content that web server
+    
+- name: remove html directory
   ansible.builtin.file:
-    path: /usr/share/nginx/html/* 
+    path: /usr/share/nginx/html
     state: absent
 
 - name: Download the frontend content
@@ -28,6 +28,11 @@
     src: /tmp/frontend.zip
     dest: /usr/share/nginx/html
     remote_src: true
+
+- name: remove default nginx conf
+  ansible.builtin.file:
+    path: /etc/nginx/nginx.conf
+    state: absent
   
 - name: copy frontend conf file
   ansible.builtin.template:
