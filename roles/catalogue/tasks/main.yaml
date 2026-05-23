@@ -39,6 +39,8 @@
     state: restarted
 
 - name: deploy catalogue 
+  tags:
+  - import
   include_role:
     name: common
     tasks_from: deployment
