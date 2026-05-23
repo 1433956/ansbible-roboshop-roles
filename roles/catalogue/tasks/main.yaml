@@ -41,6 +41,6 @@
 - name: deploy catalogue 
   tags:
   - import
-  include_role:
+  import_role:
     name: common
     tasks_from: deployment
