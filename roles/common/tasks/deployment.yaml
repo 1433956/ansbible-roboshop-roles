@@ -8,7 +8,7 @@
     path: /app
 - name: create new directory for "{{ component }}" application
   ansible.builtin.file:
-    state: present
+    state: directory
     path: /app
     
 - name: download new code 
