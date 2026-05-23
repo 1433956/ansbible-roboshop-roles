@@ -8,7 +8,7 @@
     state: absent
 - name: download new code of "{{ component }}" application 
   ansible.builtin.unarchive:
-    src: https://roboshop-artifacts.s3.amazonaws.com/{{ component }}-v{{ app-version }}.zip
+    src: "https://roboshop-artifacts.s3.amazonaws.com/{{ component }}-v{{ app-version }}.zip"
     dest: /app
     remote_src: yes
 - name: install depencies
